@@ -18,8 +18,9 @@ return new class extends Migration
             $table->string('description');
             $table->integer('value');
             $table->string('status');
-            $table->string('payment_method');
-            $table->timestamp('payment_date');
+            $table->unsignedBigInteger('payment_method_id');
+            $table->timestamp('payment_date')->nullable();
+            $table->foreign('payment_method_id')->references('id')->on('payment_methods')->onDelete('cascade');
             $table->timestamps();
         });
     }

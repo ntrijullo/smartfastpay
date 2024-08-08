@@ -20,14 +20,6 @@ Este es un proyecto de Laravel. A continuación, se detallan los pasos básicos 
    git clone https://github.com/ntrijullo/smartfastpay.git
    cd smartfastpay
 
-1. **Clonar el Repositorio**
-
-   Clona el repositorio desde GitHub a tu máquina local:
-
-   ```bash
-   git clone https://github.com/ntrijullo/smartfastpay.git
-   cd smartfastpay
-
 2. **Instalar Dependencias**
 
    Usa Composer para instalar las dependencias del proyecto:

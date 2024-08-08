@@ -64,4 +64,4 @@ Este es un proyecto de Laravel. A continuación, se detallan los pasos básicos 
 
    La aplicación debería permitir el registro de nuevos usuarios y el login. Usa las rutas proporcionadas en la API para crear y acceder a las cuentas de usuario.
 
-Para más información, por favor consulta el siguiente enlace: [[www.google.cl](https://documenter.getpostman.com/view/9501887/2sA3s1oXjA)]([http://www.google.cl](https://documenter.getpostman.com/view/9501887/2sA3s1oXjA))
+Para más información, por favor consulta el siguiente enlace: [https://documenter.getpostman.com/view/9501887/2sA3s1oXjA]([http://www.google.cl](https://documenter.getpostman.com/view/9501887/2sA3s1oXjA))

@@ -25,8 +25,7 @@ class TransactionService
     private function totalAmount(Payment $payment)
     {
         $total = 0;
-
-        switch ($payment['payment_method']) {
+        switch ($payment->paymentMethod->slug) {
             case 'pix':
                 $discountPercentage = 1.5;
                 $total = $payment['value'] * (1 - $discountPercentage / 100);

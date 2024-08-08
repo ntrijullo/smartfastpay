@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Services\TransactionService;
 use Carbon\Carbon;
 use Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -26,17 +27,17 @@ class PaymentController extends Controller
 
     public function show(Payment $payment)
     {
-        if($payment){
+        try {
             return response()->json([
                 'status' => 'success',
                 'payment' => $payment
             ], 200);
+        } catch (ModelNotFoundException $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Payment not found'
+            ], 404);
         }
-
-        return response()->json([
-            'status' => 'error',
-            'message' => 'Not found'
-        ], 422);
     }
 
     public function store(Request $request)
@@ -46,7 +47,7 @@ class PaymentController extends Controller
             'cpf' => "required",
             'description' => "required|string|max:200",
             'value' => "required|integer",
-            'payment_method' => "required|".Rule::in(["visa", "mastercard"]),
+            'payment_method' => "required|".Rule::in(["pix", "boleto", "transferencia_bancaria"]),
         ]);
 
         if ($validator->fails()) {
@@ -71,7 +72,6 @@ class PaymentController extends Controller
                     $payment->status = "pagado";
                     $payment->payment_date = Carbon::now();
                     $payment->save();
-    
                     $user->balance = $user->balance + $transaction->total_amount;
                     $user->save();
     

@@ -27,4 +27,8 @@ class Payment extends Model
         "status",
         "payment_date"
     ];
+
+    public function paymentMethod(){
+        return $this->belongsTo(PaymentMethod::class);
+    }
 }
